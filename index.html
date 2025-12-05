@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Informatik-Systeme</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(135deg, #d1e8ff, #ffedf5);
+        color: #222;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 3rem;
+        flex-wrap: wrap;
+    }
+    .card {
+	    cursor: pointer; /* wichtig für iOS */
+        background: #ffffffaa;
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        width: 320px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+    }
+	h1{
+		text-align: center;
+        margin-bottom: 1.5rem;
+		font-size: 1.4rem;
+		color: #a1b3ed;
+	}
+    h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        color: #003366;
+    }
+    h3 {
+        margin-top: 1.2rem;
+        font-size: 1.1rem;
+        color: #444;
+        text-decoration: none;
+    }
+    p {
+        margin: 0.6rem 0 1rem;
+        line-height: 1.4rem;
+    }
+    .highlight {
+        margin-top: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        color: #003366;
+        font-size: 1.05rem;
+        padding: 0.8rem;
+        border-radius: 14px;
+        border: 2px solid #00336633;
+        background: linear-gradient(135deg, #e8f1ff, #f7faff);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .preview img {
+        width: 90%;
+        border-radius: 12px;
+        margin: 0.3rem 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+	.preview {
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: opacity 0.3s ease, max-height 0.5s ease;
+		margin-top: 0;
+	}
+
+	.card:hover .preview,
+	.card.active .preview {
+		opacity: 1;
+		max-height: 500px;
+		margin-top: 1rem;
+	}
+
+	.card:hover .hover-bold,
+	.card.active .hover-bold {
+		font-weight: bold;
+		color: #003366;
+	}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card" id="1">
+		<h1>Einführungsphase</h1>
+        <h2>Informatik-Systeme</h2>
+        <h3>Grundlagen Netzwerktechnik</h3>
+        
+		<p class="hover-bold">Wie komme ich ins Internet?</p>
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=1" alt="Beispielbild 1">
+			<p>Das Internet ist heute so selbstverständlich, dass wir kaum noch darüber nachdenken, wie es eigentlich 
+			zu uns nach Hause gelangt. Bei uns lernst du, wie dein Heimnetzwerk wirklich funktioniert – damit du später 
+			in deiner eigenen Wohnung bestens vernetzt bist und jederzeit problemlos mit deinen Freunden in Kontakt bleiben kannst.</p>
+		</div>
+
+        <h3>Grundlagen Rechnerarchitektur</h3>
+        <p class="hover-bold">Wie ist mein PC aufgebaut und wie funktioniert er?</p>
+		
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=2" alt="Beispielbild 1">
+			<p>Hast du dich auch schon einmal gefragt, wie ein PC eigentlich funktioniert? Dann bist du hier genau richtig. 
+			Lerne die Grundlagen kennen, die in jedem Rechner, Smartphone oder Tablet stecken – von Nullen und 
+			Einsen bis hin zu den technischen Wundern, die unseren Alltag und Beruf erleichtern. 
+			Die Rechnerarchitektur: ein echtes Meisterwerk moderner Technik.</p>
+		</div>
+
+        <h3>Grundlagen Programmiersprachen</h3>
+        <p class="hover-bold">Was sind Programmiersprachen und welche gibt es?</p>
+		
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
+			<p> Einen PC zusammenzubauen ist schön und gut – doch wahre Meister erwecken ihn erst zum Leben. Und das gelingt nur mit Programmen. 
+			Tauche ein in die faszinierende Welt der Programmierung, löse spannende Logikaufgaben in C# und wachse an jeder Herausforderung. 
+			Mach deine ersten Schritte auf dem Weg, ein Meister der Software zu werden.</p>
+		</div>
+		
+    </div>
+	
+
+    <div class="card" id="2">
+		<h1>Hauptphase 1 und 2</h1>
+        <h2>Informatik-Systeme</h2>
+        <h3>Hauptthema: Softwareentwicklung</h3>
+        <p class="hover-bold">Welche großen Softwareprojekte gibt es?</p>
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
+			<p > Große Softwareprojekte prägen unseren Alltag: von Betriebssystemen wie Windows oder macOS über Office-Programme 
+			bis hin zu Plattformen wie Google, Spotify – und natürlich auch großen Spielen wie Fortnite oder Minecraft. 
+			Millionen Zeilen Code arbeiten hier perfekt zusammen. Erfahre mehr darüber, 
+			wie solche Meisterwerke der Technik entstehen und logistisch funktionieren!</p>
+		</div>
+        <p class="hover-bold">Wie plane ich Software anhand einer Kundenbeschreibung?</p>
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
+			<p> Bevor aus einer Idee echte Software wird, muss sie genau geplant werden – besonders, wenn sie für Kunden 
+			entwickelt wird. Anhand einer Kundenbeschreibung lernst du, die Anforderungen zu verstehen, in einzelne Schritte 
+			zu zerlegen und ein Konzept zu erstellen, das später umgesetzt werden kann. 
+			Natürlich steht bei uns die Praxis vor der Theorie: Learning by Doing!</p>
+		</div>
+        <p class="hover-bold">Wie koordiniere ich als Projektleiter Mitarbeiter in großen Softwareprojekten?</p>
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
+			<p> Als Projektleiter in großen Softwareprojekten koordinierst du Teams, planst Aufgaben und stellst sicher, dass alles reibungslos abläuft – 
+			dabei helfen bewährte Vorgehensmodelle wie Scrum oder Wasserfall. 
+			Erfahre mehr darüber, wie man Projekte erfolgreich leitet und gemeinsam beeindruckende Software entstehen lässt.</p>
+		</div>
+        <p class="hover-bold">Wie entwickle ich Software mit der Sprache C#?</p>
+		<div class="preview">
+            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
+			<p> Mit C# kannst du leistungsstarke Software entwickeln – von kleinen Tools bis zu komplexen Anwendungen. 
+			Dabei lernst du die Grundlagen der Objektorientierung kennen, um Programme klar zu strukturieren 
+			und wiederverwendbar zu gestalten. Außerdem zeigen wir dir, wie du moderne Entwicklungsumgebungen (IDEs) 
+nutzt, um effizient zu programmieren.</p>
+		</div>
+
+
+</div>
+
+    <div class="card" id="3">
+		<h1>Hauptphase 3 und 4</h1>
+        <h2>Informatik-Systeme</h2>
+        <h3>Hauptthema: Datenbanken</h3>
+        <p>Wie können Unternehmen riesige Datenmengen sicher speichern?</p>
+        <p>Wie kann ich das Speichern meiner Daten optimieren?</p>
+        <p>Wie verbinde ich meine Datenbank mit meiner selbst geschriebenen Software?</p>
+    </div>
+
+</div>
+<script>
+const isMobile = window.innerWidth <= 768; // z.B. ≤768px = Mobil
+const last="1"
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll('.card');
+	window.scrollBy(0, -100)
+    function handleCardToggle(card) {
+        const isOpening = !card.classList.contains('active');
+        card.classList.toggle('active');
+		
+        // Scroll immer einmalig zur Card, egal ob Preview existiert oder nicht
+        if (isOpening) {
+            card.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    cards.forEach(card => {
+        card.addEventListener('touchend', e => {
+            handleCardToggle(card);
+        });
+        card.addEventListener('click', e => {
+            handleCardToggle(card);
+        });
+    });
+	
+	function swapDivs(a, b) {
+		const div1 = document.getElementById(a);
+		const div2 = document.getElementById(b);
+		// Referenz auf das übergeordnete Element
+		const parent = div1.parentNode;
+
+		// Platzhalter erstellen
+		const temp = document.createElement('div');
+		parent.replaceChild(temp, div1);  // div1 durch temp ersetzen
+		parent.replaceChild(div1, div2);  // div2 durch div1 ersetzen
+		parent.replaceChild(div2, temp);  // temp durch div2 ersetzen
+	}
+});
+</script>
+
+
+
+
+
+
+</body>
+</html>

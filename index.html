@@ -1,240 +1,174 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Informatik-Systeme</title>
+<meta charset="UTF-8">
+<title>Profilfach Informatik GWG</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
     body {
-        margin: 0;
-        font-family: "Montserrat", sans-serif;
-        background: linear-gradient(135deg, #d1e8ff, #ffedf5);
-        color: #222;
+		margin: 0;
+		font-family: "Montserrat", sans-serif;
+		background: linear-gradient(135deg, #d1e8ff, #ffedf5);
+		color: #222;
+		position: relative;
+	}
+
+	body::before {
+		content: "";
+		position: fixed;        /* bleibt immer an der gleichen Stelle */
+		top: 0;
+		left: 0;
+		width: 100vw;           /* volle Breite des Bildschirms */
+		height: 100vh;          /* volle Höhe des Bildschirms */
+		background: url('schule.jpg') center/cover no-repeat; /* 'cover' füllt den gesamten Bereich */
+		opacity: 0.3;           /* Deckkraft anpassen */
+		pointer-events: none;   /* Klicks gehen durch */
+		z-index: -1;            /* hinter allen Inhalten */
+	}
+
+    table {
+        width: 90%;
+        margin: 3rem auto;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        background: transparent;
     }
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 2rem;
-        padding: 3rem;
-        flex-wrap: wrap;
-    }
-    .card {
-	    cursor: pointer; /* wichtig für iOS */
+
+    th, td {
+        padding: 1.4rem;
+        text-align: center;
+        border: 1px solid rgba(0,0,0,0.15);
+        font-size: 1.15rem;
         background: #ffffffaa;
         backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 2rem;
-        width: 320px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid rgba(255,255,255,0.5);
     }
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 35px rgba(0,0,0,0.15);
-    }
-	h1{
-		text-align: center;
-        margin-bottom: 1.5rem;
-		font-size: 1.4rem;
-		color: #a1b3ed;
-	}
-    h2 {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        font-size: 1.2rem;
-        color: #003366;
-    }
-    h3 {
-        margin-top: 1.2rem;
-        font-size: 1.1rem;
-        color: #444;
-        text-decoration: none;
-    }
-    p {
-        margin: 0.6rem 0 1rem;
-        line-height: 1.4rem;
-    }
-    .highlight {
-        margin-top: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-        color: #003366;
-        font-size: 1.05rem;
-        padding: 0.8rem;
-        border-radius: 14px;
-        border: 2px solid #00336633;
+
+    th {
+        border-radius: 8px;
         background: linear-gradient(135deg, #e8f1ff, #f7faff);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        font-weight: 600;
+        color: #003366;
     }
 
-    .preview img {
-        width: 90%;
-        border-radius: 12px;
-        margin: 0.3rem 0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    tr td:first-child {
+        border-radius: 14px 0 0 14px;
     }
-	.preview {
-		opacity: 0;
-		max-height: 0;
-		overflow: hidden;
-		transition: opacity 0.3s ease, max-height 0.5s ease;
-		margin-top: 0;
-	}
+    tr td:last-child {
+        border-radius: 0 14px 14px 0;
+    }
+    tr td:only-child {
+        border-radius: 14px;
+    }
 
-	.card:hover .preview,
-	.card.active .preview {
-		opacity: 1;
-		max-height: 500px;
-		margin-top: 1rem;
-	}
+    .clickable {
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
 
-	.card:hover .hover-bold,
-	.card.active .hover-bold {
-		font-weight: bold;
-		color: #003366;
-	}
+    .clickable:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    .infosys { background: #b9cbe0; }
+    .ti { background: #e3efab; }
+    .kt { background: #f8b2b2; }
+
+    /* ---------------------------------------
+       📱 MOBILE ANPASSUNG
+       --------------------------------------- */
+    @media (max-width: 700px) {
+
+        table, thead, tbody, th, td, tr {
+            display: block;
+            width: 100%;
+        }
+
+        thead {
+            display: none; /* Überschriften verschwinden */
+        }
+
+        tr {
+            margin-bottom: 18px;
+        }
+
+        td {
+            text-align: left;
+            padding: 1.1rem 1.3rem;
+            position: relative;
+            border-radius: 14px !important;
+            border: 1px solid rgba(0,0,0,0.15);
+        }
+
+        /* 📌 Label für jede Zelle einblenden */
+        td::before {
+            content: attr(data-label);
+            font-weight: 600;
+            color: #003366;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Klickbare Zellen weiter gut bedienbar */
+        .clickable:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    }
 </style>
 </head>
 <body>
 
-<div class="container">
+<h1 style="text-align:center; color:#003366; margin-top:2rem;">
+    Profilfach Informatik am GWG – Kursübersicht
+</h1>
 
-    <div class="card" id="1">
-		<h1>Einführungsphase</h1>
-        <h2>Informatik-Systeme</h2>
-        <h3>Grundlagen Netzwerktechnik</h3>
-        
-		<p class="hover-bold">Wie komme ich ins Internet?</p>
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=1" alt="Beispielbild 1">
-			<p>Das Internet ist heute so selbstverständlich, dass wir kaum noch darüber nachdenken, wie es eigentlich 
-			zu uns nach Hause gelangt. Bei uns lernst du, wie dein Heimnetzwerk wirklich funktioniert – damit du später 
-			in deiner eigenen Wohnung bestens vernetzt bist und jederzeit problemlos mit deinen Freunden in Kontakt bleiben kannst.</p>
-		</div>
+<table>
+    <thead>
+        <tr>
+            <th>Schuljahr 1<br>Einführungsphase</th>
+            <th>Schuljahr 2<br>Hauptphase 1 und 2</th>
+            <th>Schuljahr 3<br>Hauptphase 3 und 4</th>
+            <th>Prüfung</th>
+        </tr>
+    </thead>
 
-        <h3>Grundlagen Rechnerarchitektur</h3>
-        <p class="hover-bold">Wie ist mein PC aufgebaut und wie funktioniert er?</p>
-		
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=2" alt="Beispielbild 1">
-			<p>Hast du dich auch schon einmal gefragt, wie ein PC eigentlich funktioniert? Dann bist du hier genau richtig. 
-			Lerne die Grundlagen kennen, die in jedem Rechner, Smartphone oder Tablet stecken – von Nullen und 
-			Einsen bis hin zu den technischen Wundern, die unseren Alltag und Beruf erleichtern. 
-			Die Rechnerarchitektur: ein echtes Meisterwerk moderner Technik.</p>
-		</div>
+    <tbody>
+        <tr>
+            <td colspan="3"
+                class="clickable infosys"
+                data-label="Kurs"
+                onclick="location.href='infosys.html'">
+                Informatiksysteme (InfoSys) – Leistungskurs (LK)
+            </td>
+            <td data-label="Prüfung"><strong>Pflicht</strong></td>
+        </tr>
 
-        <h3>Grundlagen Programmiersprachen</h3>
-        <p class="hover-bold">Was sind Programmiersprachen und welche gibt es?</p>
-		
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
-			<p> Einen PC zusammenzubauen ist schön und gut – doch wahre Meister erwecken ihn erst zum Leben. Und das gelingt nur mit Programmen. 
-			Tauche ein in die faszinierende Welt der Programmierung, löse spannende Logikaufgaben in C# und wachse an jeder Herausforderung. 
-			Mach deine ersten Schritte auf dem Weg, ein Meister der Software zu werden.</p>
-		</div>
-		
-    </div>
-	
+        <tr>
+            <td colspan="3"
+                class="clickable ti"
+                data-label="Kurs"
+                onclick="location.href='ti.html'">
+                Technische Informatik (TI)
+            </td>
+            <td data-label="Prüfung"><strong>nach Wahl</strong></td>
+        </tr>
 
-    <div class="card" id="2">
-		<h1>Hauptphase 1 und 2</h1>
-        <h2>Informatik-Systeme</h2>
-        <h3>Hauptthema: Softwareentwicklung</h3>
-        <p class="hover-bold">Welche großen Softwareprojekte gibt es?</p>
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
-			<p > Große Softwareprojekte prägen unseren Alltag: von Betriebssystemen wie Windows oder macOS über Office-Programme 
-			bis hin zu Plattformen wie Google, Spotify – und natürlich auch großen Spielen wie Fortnite oder Minecraft. 
-			Millionen Zeilen Code arbeiten hier perfekt zusammen. Erfahre mehr darüber, 
-			wie solche Meisterwerke der Technik entstehen und logistisch funktionieren!</p>
-		</div>
-        <p class="hover-bold">Wie plane ich Software anhand einer Kundenbeschreibung?</p>
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
-			<p> Bevor aus einer Idee echte Software wird, muss sie genau geplant werden – besonders, wenn sie für Kunden 
-			entwickelt wird. Anhand einer Kundenbeschreibung lernst du, die Anforderungen zu verstehen, in einzelne Schritte 
-			zu zerlegen und ein Konzept zu erstellen, das später umgesetzt werden kann. 
-			Natürlich steht bei uns die Praxis vor der Theorie: Learning by Doing!</p>
-		</div>
-        <p class="hover-bold">Wie koordiniere ich als Projektleiter Mitarbeiter in großen Softwareprojekten?</p>
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
-			<p> Als Projektleiter in großen Softwareprojekten koordinierst du Teams, planst Aufgaben und stellst sicher, dass alles reibungslos abläuft – 
-			dabei helfen bewährte Vorgehensmodelle wie Scrum oder Wasserfall. 
-			Erfahre mehr darüber, wie man Projekte erfolgreich leitet und gemeinsam beeindruckende Software entstehen lässt.</p>
-		</div>
-        <p class="hover-bold">Wie entwickle ich Software mit der Sprache C#?</p>
-		<div class="preview">
-            <img src="https://picsum.photos/300/180?random=3" alt="Beispielbild 1">
-			<p> Mit C# kannst du leistungsstarke Software entwickeln – von kleinen Tools bis zu komplexen Anwendungen. 
-			Dabei lernst du die Grundlagen der Objektorientierung kennen, um Programme klar zu strukturieren 
-			und wiederverwendbar zu gestalten. Außerdem zeigen wir dir, wie du moderne Entwicklungsumgebungen (IDEs) 
-nutzt, um effizient zu programmieren.</p>
-		</div>
-
-
-</div>
-
-    <div class="card" id="3">
-		<h1>Hauptphase 3 und 4</h1>
-        <h2>Informatik-Systeme</h2>
-        <h3>Hauptthema: Datenbanken</h3>
-        <p>Wie können Unternehmen riesige Datenmengen sicher speichern?</p>
-        <p>Wie kann ich das Speichern meiner Daten optimieren?</p>
-        <p>Wie verbinde ich meine Datenbank mit meiner selbst geschriebenen Software?</p>
-    </div>
-
-</div>
-<script>
-const isMobile = window.innerWidth <= 768; // z.B. ≤768px = Mobil
-const last="1"
-
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll('.card');
-	window.scrollBy(0, -100)
-    function handleCardToggle(card) {
-        const isOpening = !card.classList.contains('active');
-        card.classList.toggle('active');
-		
-        // Scroll immer einmalig zur Card, egal ob Preview existiert oder nicht
-        if (isOpening) {
-            card.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-
-    cards.forEach(card => {
-        card.addEventListener('touchend', e => {
-            handleCardToggle(card);
-        });
-        card.addEventListener('click', e => {
-            handleCardToggle(card);
-        });
-    });
-	
-	function swapDivs(a, b) {
-		const div1 = document.getElementById(a);
-		const div2 = document.getElementById(b);
-		// Referenz auf das übergeordnete Element
-		const parent = div1.parentNode;
-
-		// Platzhalter erstellen
-		const temp = document.createElement('div');
-		parent.replaceChild(temp, div1);  // div1 durch temp ersetzen
-		parent.replaceChild(div1, div2);  // div2 durch div1 ersetzen
-		parent.replaceChild(div2, temp);  // temp durch div2 ersetzen
-	}
-});
-</script>
-
-
-
-
-
+        <tr>
+            <td data-label="Einführungsphase"></td>
+            <td colspan="2"
+                class="clickable kt"
+                data-label="Kurs"
+                onclick="location.href='kt.html'">
+                Kommunikationstechnik (KT)
+            </td>
+            <td data-label="Prüfung"><strong>keine</strong></td>
+        </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

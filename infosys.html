@@ -282,30 +282,38 @@ nutzt, um effizient zu programmieren.</p>
 </div>
 <script>
 const isMobile = window.innerWidth <= 768; // z.B. ≤768px = Mobil
-const last="1"
 
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll('.card');
 	window.scrollBy(0, -100)
-    function handleCardToggle(card) {
-        const isOpening = !card.classList.contains('active');
-        card.classList.toggle('active');
+    function handleCardToggleMobile(card) {
+		if (card.classList.contains('active')) return;
 		
-        // Scroll immer einmalig zur Card, egal ob Preview existiert oder nicht
-        if (isOpening) {
-            card.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
+		// Alle anderen Karten schließen
+		document.querySelectorAll('.card.active').forEach(c => {
+			if (c !== card) c.classList.remove('active');
+		});
+
+		// Neue Karte aktivieren
+		card.classList.add('active');
+	}
+	
+	function handleCardTogglePC(card) {
+		if (card.classList.contains('active')){ 
+			card.classList.remove('active');
+		}
+		else {	
+			card.classList.add('active');
+		}
+	}
+		
 
     cards.forEach(card => {
         card.addEventListener('touchend', e => {
-            handleCardToggle(card);
+            handleCardToggleMobile(card);
         });
         card.addEventListener('click', e => {
-            handleCardToggle(card);
+            handleCardTogglePC(card);
         });
     });
 	
@@ -331,3 +339,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
